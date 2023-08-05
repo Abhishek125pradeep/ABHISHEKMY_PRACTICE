@@ -1,0 +1,33 @@
+{
+  "admin": [
+    {
+      "Address": "wardha",
+      "contact": 974988791017,
+      "id": 1
+    },
+    {
+      "id": 2
+    },
+    {
+      "name": "Arman-Malik",
+      "Address": "Wardha",
+      "id": 3
+    },
+    {
+      "name": "prakash",
+      "Address": "wardha",
+      "id": 4
+    }
+  ],
+  "ownerlkl": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "student": {
+    "fullName": "hvjgvhjgukgku",
+    "MobNo": "94864684684"
+  }
+}
