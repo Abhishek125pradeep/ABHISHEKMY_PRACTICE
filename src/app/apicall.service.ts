@@ -6,26 +6,29 @@ import { FormGroup } from '@angular/forms';
   providedIn: 'root'
 })
 export class ApicallService {
- 
-  recordById: any;
-  id:any;
- Apiurl = "http://localhost:3000"
-  Username: any;
-
-
-  constructor(private http:HttpClient) { } 
   
-  PostCall(Formdata:any,endpoint:any) {
+
+  recordById: any;
+  id: any;
+  id2: any;
+  Apiurl = "http://localhost:3000"
+  Username: any;
+  image: any;
+
+
+  constructor(private http: HttpClient) { }
+
+  PostCall(Formdata: any, endpoint: any) {
     let Url = this.Apiurl + '/' + endpoint;
-    return this.http.post(Url,Formdata)
+    return this.http.post(Url, Formdata)
   }
 
-  patchApicall(endpoint:any,id:any,formdata:any){
-    let url = this.Apiurl+"/"+id;
-    return this.http.patch(url,formdata)
+  patchApicall(endpoint: any, id: any, formdata: any) {
+    let url = this.Apiurl + "/" + id;
+    return this.http.patch(url, formdata)
   }
-  getApicall(endPoint:any) {
-    let url =this.Apiurl+"/"+endPoint;
+  getApicall(endPoint: any) {
+    let url = this.Apiurl + "/" + endPoint;
     return this.http.get(url)
   }
 

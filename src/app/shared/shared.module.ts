@@ -10,6 +10,10 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatCardModule} from '@angular/material/card';
+import {MatSelectModule} from '@angular/material/select';
+import { TagInputModule } from 'ngx-chips';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [],
   imports: [
@@ -24,7 +28,11 @@ import {MatCardModule} from '@angular/material/card';
     MatButtonModule,
     MatDialogModule,
     MatChipsModule,
-    MatCardModule
+    MatCardModule,
+    MatSelectModule,
+    TagInputModule, 
+    BrowserAnimationsModule
+
   ],
   exports:[
     MatInputModule,
@@ -37,7 +45,10 @@ import {MatCardModule} from '@angular/material/card';
     MatButtonModule,
     MatDialogModule,
     MatChipsModule,
-    MatCardModule
+    MatCardModule,
+    MatSelectModule,
+    TagInputModule,
+    BrowserAnimationsModule 
   ]
 })
 export class SharedModule { }

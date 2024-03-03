@@ -1,8 +1,20 @@
 <div class="blur-background">
-    <div class="Div-Form" style="background-color: #fff; height: 800px;width: 550px;box-shadow: 0 15px 40px rgba(0,0,0,.5);" >
+    <div class="Div-Form" style="background-color: #fff; height: 1000px;width: 650px;box-shadow: 0 15px 40px rgba(0,0,0,.5);" >
 
         
         <form [formGroup]="registerationform">
+            <mat-card style="width: 90px;">
+                <mat-card-content style="border: 1px solid black;height: 150px;width: 130px;">
+                    <img [src]="url" style="height: 130px; width: 100px;"><br><br>
+                    <input hidden type="file" [src]="url" style="margin-top: 50px;" formControlName="Photo"  (change)="ImageUpload($event)" #profileUpload>
+                    <button (click)="profileUpload.click()" style="height: 35px; width: 120px;">Upload Photo</button>    
+                
+                </mat-card-content>
+
+            </mat-card>  <br><br><br>
+          
+           
+          
             <mat-form-field class="form">
                 <mat-label>Name</mat-label>
                 <input matInput placeholder="" formControlName="Name">
@@ -13,14 +25,15 @@
             <mat-form-field  class="form">
                 <mat-label>Last Name</mat-label>
                 <input matInput placeholder="" formControlName="LastName">
+                <mat-error  *ngIf="registerationform.get('LastName')?.errors?.['pattern']">Name Should be In Alphabates Only</mat-error>
                 <mat-error  *ngIf="registerationform.get('LastName')?.errors?.['maxlength']">Name Should Not More that 20 Charectors</mat-error>
-                <mat-error  *ngIf="registerationform.get('LastName')?.errors?.['required'] && !registerationform.get('Name')?.errors?.['maxLength']">Name Should be required</mat-error> 
+                <mat-error  *ngIf="registerationform.get('LastName')?.errors?.['required'] && !registerationform.get('Name')?.errors?.['maxLength']">LastName Should be required</mat-error> 
                 </mat-form-field> <br>      
                 <mat-form-field class="form">
                 <mat-label>Email</mat-label>
                 <input matInput placeholder="" formControlName="Email">
                 <mat-error *ngIf="registerationform.get('Email')?.errors?.['pattern']">Please Match The Email Pattern</mat-error> 
-                        
+                <mat-error *ngIf="registerationform.get('Email')?.errors?.['required']">Email Should be required</mat-error>         
                 </mat-form-field> <br>        
                 <mat-form-field class="form">
                 <mat-label>Mobile No</mat-label>
@@ -28,12 +41,25 @@
                 <mat-error  *ngIf="registerationform.get('MobNo')?.errors?.['pattern'] && !registerationform.get('MobNo')?.errors?.['maxLength'] && !registerationform.get('MobNo')?.errors?.['required']">Mobile   Number Should be In Only Integer</mat-error>
                 <mat-error *ngIf="registerationform.get('MobNo')?.errors?.['maxlength']">Mobile Number Should be Maximum 10 Digit</mat-error>
                 <mat-error *ngIf="registerationform.get('MobNo')?.errors?.['required']">Mobile Number Should be required</mat-error>
-                </mat-form-field> <br>     
+                </mat-form-field> <br> 
+                <label class="example-value-label">{{slider.value}}</label>    
                <label><strong>Age</strong></label> &nbsp;
-                <mat-slider min="1" max="100" step="5" >
-                    <input matSliderThumb>
-                </mat-slider> <br>
-                    <mat-form-field class="form">
+               <mat-slider 
+               class="example-margin"
+               [disabled]="disabled"
+               [max]="max"
+               [min]="min"
+               [step]="step"
+               [discrete]="thumbLabel"
+               [showTickMarks]="showTicks">
+             <input matSliderThumb [(ngModel)]="value" #slider formControlName="age">
+                
+               </mat-slider>  <br>
+       
+              
+
+               
+                 <mat-form-field class="form">
                 <mat-label>State</mat-label>
                 <input matInput placeholder="" formControlName="State">
                 <mat-error  *ngIf="registerationform.get('State')?.errors?.['pattern'] && !registerationform.get('State')?.errors?.['required'] ">State Should be In Only Alphabates</mat-error>
@@ -42,25 +68,36 @@
                 <mat-form-field class="form">
                 <mat-label>Contry</mat-label>
                 <input matInput placeholder="" formControlName="Contry">
+                <mat-error *ngIf="registerationform.get('Contry')?.errors?.['required']">Country Should be required</mat-error>
                 </mat-form-field> <br> 
+                
                 <mat-form-field class="form">
-                <mat-label>Address</mat-label>
-                <input matInput placeholder="" formControlName="Address">
-                </mat-form-field> <br>      
-                <mat-form-field class="form">
-                <mat-label>tags</mat-label>
-                <input matInput placeholder="">
-                </mat-form-field> <br>  
-                <mat-chip-listbox aria-label="Fish selection">
-                <mat-chip-option>Cricket</mat-chip-option>
-                <mat-chip-option>Football</mat-chip-option>
-                <mat-chip-option color="accent" selected>Singing</mat-chip-option>
-                <mat-chip-option color="warn">Reading Books</mat-chip-option>
-                </mat-chip-listbox> <br>
+                    <mat-label>Select Option</mat-label>
+                    <mat-select formControlName="option">
+                      <mat-option value="home" >Home</mat-option>
+                      <mat-option value="company">Company</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <div *ngIf="selectedOption === 'home' || selectedOption === 'company'" >
+                    <mat-form-field>
+                      <input matInput placeholder="" formControlName="address1">
+                     
+                    </mat-form-field>
+                    <mat-form-field>
+                      <input matInput placeholder="" formControlName="address2">
+                     
+                    </mat-form-field>
+                  </div>
+                
+                  <tag-input [ngModel]="item" style="margin-left: 192px; width: 220px;" formControlName="Tags">
+
+                  </tag-input> 
                 <section class="example-section">
                 <mat-checkbox class="example-margin">Subscribe to new letter</mat-checkbox>
-                </section>
-                <button mat-raised-button color="primary" (click)="Submit(registerationform.value)">Submit</button> &nbsp;
+                </section> <br>
+       
+                <button mat-raised-button color="primary" (click)="Submit(registerationform.value)" *ngIf="!recordbyid">Submit</button> &nbsp;
+                <button mat-raised-button color="primary" (click)="Update()" *ngIf="recordbyid">Update</button>
                 <button mat-raised-button color="warn" (click)="Cancel()">Cancel</button>
         </form>
         </div>

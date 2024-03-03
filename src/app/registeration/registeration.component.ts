@@ -21,6 +21,7 @@ export class RegisterationComponent {
   id: any;
   UserDetails: any;
   registerationUserdetails:any = [];
+  id2!: number;
  
   constructor(private rout: Router, private fb: FormBuilder, private apicallService: ApicallService,private dialogue : MatDialog) { }
 
@@ -56,23 +57,28 @@ this.fomrvalidators()
   Register() {
   this.dialogue.open(ExtraCompoComponent,{
     width:"63%",
-    height: "700px",
+    height: "1300px",
 
     
   })
+  // this.rout.navigateByUrl('/Profile')
+ 
+  }
   
-
-  }
-  Edit(id:any){
-
-  }
   async ShowregisterformDetail(){
   this.UserDetails = await this.apicallService.getApicall("posts").toPromise()
+      console.log(this.UserDetails);
       
   this.getHoteldetailbyOwner()
       }
       getHoteldetailbyOwner(){
     
+      }
+      profile(){
+      //  this.apicallService.id2 =  this.id2 = 3
+      //   this.rout.navigateByUrl(`/Profile/${this.id}`);
+        console.log();
+        
       }
        
   }

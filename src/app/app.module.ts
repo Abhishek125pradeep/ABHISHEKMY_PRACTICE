@@ -9,6 +9,8 @@ import { SharedModule } from './shared/shared.module';
 import { CharonlyDirective } from './charonly.directive';
 import { ExtraCompoComponent } from './extra-compo/extra-compo.component';
 import { EditdetailComponent } from './editdetail/editdetail.component';
+import { ProfileComponent } from './profile/profile.component';
+
 
 @NgModule({
   declarations: [
@@ -16,7 +18,10 @@ import { EditdetailComponent } from './editdetail/editdetail.component';
     RegisterationComponent,
     CharonlyDirective,
     ExtraCompoComponent,
-    EditdetailComponent
+    EditdetailComponent,
+    ProfileComponent,
+    
+
   ],
   imports: [
     BrowserModule,
