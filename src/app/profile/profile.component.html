@@ -19,22 +19,28 @@
 </div> -->
 
    
-    <img [src]="url" style="height: 150px;"><br><br>
+    <img [src]="url" style="height: 200px;"><br><br>
     <input hidden type="file" [src]="url" style="margin-top: 50px;" formControlName="Photo"  (change)="ImageUpload($event)" #profileUpload>
     <div>
         <button type="button" class="btn btn-warning"  (click)="profileUpload.click()" >Edit Photo</button> &nbsp; 
-        <button type="button" class="btn btn-warning" (click)="Edit(UserDetails.id)">Edit Profile</button>   
+        <button type="button" class="btn btn-warning" (click)="Edit(UserDetails.id)">Edit Profile</button>  
+       
+       
     </div>
+    <div>
+        <p>I'am {{UserDetails.Name}} {{UserDetails.LastName}}  and I am above 20 years and 
+            you can send your emails to <mark>{{UserDetails.Email}} </mark>. I live in the state of {{UserDetails.State}}.
+            I Like to Play {{UserDetails.Tags}}, 
+            And please send me newsletter. Please reach out to me on my phone number {{UserDetails.MobNo}}  <br>
+    
+        </p>
+    </div>
+    <button type="button" class="btn btn-success">I Agree</button> 
 
-<div style="margin-top: -200px;;margin-left: -80px;">
-    <p>I'am {{UserDetails.Name}} {{UserDetails.LastName}}  and I am above 20 years and 
-        you can send your emails to <mark>{{UserDetails.Email}} </mark>. I live in the state of {{UserDetails.State}}.
-        I Like to Play {{UserDetails.Tags}}, 
-        And please send me newsletter. Please reach out to me on my phone number {{UserDetails.MobNo}}  <br>
-        <button type="button" class="btn btn-success">I Agree</button>
-    </p>
+
+    
         
-</div>
+
 
 
 

@@ -96,8 +96,8 @@
                 <mat-checkbox class="example-margin">Subscribe to new letter</mat-checkbox>
                 </section> <br>
        
-                <button mat-raised-button color="primary" (click)="Submit(registerationform.value)" *ngIf="!recordbyid">Submit</button> &nbsp;
-                <button mat-raised-button color="primary" (click)="Update()" *ngIf="recordbyid">Update</button>
+                <button mat-raised-button color="primary" (click)="Submit(registerationform.value)" *ngIf="recordbyid.length==0">Submit</button> &nbsp;
+                <button mat-raised-button color="primary" (click)="Update()" *ngIf="recordbyid.length>0">Update</button>
                 <button mat-raised-button color="warn" (click)="Cancel()">Cancel</button>
         </form>
         </div>

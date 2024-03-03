@@ -11,9 +11,11 @@ export class ProfileComponent {
   UserDetails: any;
   id:any;
   Name: any;
-  private activatedRoute = inject(ActivatedRoute) 
   
   url= "assets/images/pass.jpeg" ;
+  private activatedRoute = inject(ActivatedRoute) 
+  
+
  
 constructor(private apicallService:ApicallService,private rout:Router){
   
@@ -22,18 +24,17 @@ ngOnInit(){
 
   this.id = this.activatedRoute.snapshot.params['id'];
   this.Name = this.activatedRoute.snapshot.params['Name'];
-  // this.id = this.rout.
-  this.ShowregisterformDetail()
-  this.Edit(this.id)
+  
+ this.ShowregisterformDetail()
   
 }
 
 
   async ShowregisterformDetail(){
-
+   
     this.UserDetails = await this.apicallService.getApicall(`posts/${this.id}`).toPromise()
         console.log(this.UserDetails)
-       
+      
   
 }
 ImageUpload(e:any){
@@ -46,15 +47,15 @@ ImageUpload(e:any){
   }
 }
 Edit(id:any){
-  let recordById:any = [];
-  console.log("id",id);
+ let  recordById:any = [];
+   console.log("id",id);
   this.UserDetails.forEach((ele:any) => {
-     if(ele.id == id){
+      if(ele.id == id){
       recordById.push(ele)
-     }
-  });
-  console.log(recordById);
-  this.apicallService.recordById = recordById;
+      }
+   });
+
+  this.apicallService.recordById =this.UserDetails
   this.apicallService.id = id;
   this.rout.navigateByUrl("/Extracompo")
 }

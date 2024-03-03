@@ -39,6 +39,7 @@ export class ExtraCompoComponent {
     this.recordbyid = this.apicallService.recordById;
 
     this.id = this.apicallService.id
+    console.log(this.recordbyid);
 
 
     this.formvalidationcontrol();
@@ -52,15 +53,15 @@ export class ExtraCompoComponent {
   formvalidationcontrol() {
     // this.Navbar = this.fb.group({})
     this.registerationform = this.fb.group({
-      Name: [this.recordbyid ? this.recordbyid[0].Name : '', [Validators.pattern(this.alphabeticPattern), Validators.maxLength(20), Validators.required]],
-      LastName: [this.recordbyid ? this.recordbyid[0].LastNameName : '', [Validators.pattern(this.alphabeticPattern), Validators.maxLength(20), Validators.required]],
-      Email: [this.recordbyid ? this.recordbyid[0].Email : '', [Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/), Validators.required]],
-      MobNo: [this.recordbyid ? this.recordbyid[0].MobNo : '', [Validators.pattern('[0-9]*$'), Validators.maxLength(10), Validators.required]],
-      State: [this.recordbyid ? this.recordbyid[0].State : '', [Validators.pattern('[a-zA-Z]*$'), Validators.required]],
-      Contry: [this.recordbyid ? this.recordbyid[0].Contry : '', [Validators.required]],
-      Address: [this.recordbyid ? this.recordbyid[0].Address : '', [Validators.required]],
-      Photo:[this.recordbyid ? this.recordbyid[0].Photo : '',],
-      age:[this.recordbyid ? this.recordbyid[0].Photo : '',],
+      Name: [this.recordbyid ? this.recordbyid[0]?.Name : '', [Validators.pattern(this.alphabeticPattern), Validators.maxLength(20), Validators.required]],
+      LastName: [this.recordbyid ? this.recordbyid[0]?.LastNameName : '', [Validators.pattern(this.alphabeticPattern), Validators.maxLength(20), Validators.required]],
+      Email: [this.recordbyid ? this.recordbyid[0]?.Email : '', [Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/), Validators.required]],
+      MobNo: [this.recordbyid ? this.recordbyid[0]?.MobNo : '', [Validators.pattern('[0-9]*$'), Validators.maxLength(10), Validators.required]],
+      State: [this.recordbyid ? this.recordbyid[0]?.State : '', [Validators.pattern('[a-zA-Z]*$'), Validators.required]],
+      Contry: [this.recordbyid ? this.recordbyid[0]?.Contry : '', [Validators.required]],
+      Address: [this.recordbyid ? this.recordbyid[0]?.Address : '', [Validators.required]],
+      Photo:[this.recordbyid ? this.recordbyid[0]?.Photo : '',],
+      age:[this.recordbyid ? this.recordbyid[0]?.Photo : '',],
       option: ['', Validators.required],
       Tags:[]
 
@@ -87,6 +88,7 @@ export class ExtraCompoComponent {
     this.apicallService.PostCall(Data, endpoint).subscribe(response => {
       this.Apires = response;
       console.log(this.Apires);
+     
       this.rout.navigateByUrl(`/Profile/${this.Apires.id}`)
 
     })

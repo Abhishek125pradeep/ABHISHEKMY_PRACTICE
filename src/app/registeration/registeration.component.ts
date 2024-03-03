@@ -65,15 +65,7 @@ this.fomrvalidators()
  
   }
   
-  async ShowregisterformDetail(){
-  this.UserDetails = await this.apicallService.getApicall("posts").toPromise()
-      console.log(this.UserDetails);
-      
-  this.getHoteldetailbyOwner()
-      }
-      getHoteldetailbyOwner(){
-    
-      }
+ 
       profile(){
       //  this.apicallService.id2 =  this.id2 = 3
       //   this.rout.navigateByUrl(`/Profile/${this.id}`);

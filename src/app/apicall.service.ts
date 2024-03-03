@@ -8,12 +8,13 @@ import { FormGroup } from '@angular/forms';
 export class ApicallService {
   
 
-  recordById: any;
+  recordById : any=[];
   id: any;
   id2: any;
   Apiurl = "http://localhost:3000"
   Username: any;
   image: any;
+
 
 
   constructor(private http: HttpClient) { }
